@@ -1,0 +1,19 @@
+.contacto {
+  display: grid;
+  gap: 1rem;
+}
+
+mat-card {
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+}
+
+.formulario {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.estado {
+  border-left: 4px solid var(--color-primario);
+}
