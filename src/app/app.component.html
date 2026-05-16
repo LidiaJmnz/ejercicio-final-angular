@@ -1,0 +1,24 @@
+<mat-toolbar class="barra-superior">
+  <span class="titulo">Angular Final - Lidia</span>
+
+  <nav class="menu">
+    <a
+      mat-button
+      routerLink="/inicio"
+      routerLinkActive="activo"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Inicio
+    </a>
+    <a mat-button routerLink="/servicios" routerLinkActive="activo">Servicios</a>
+    <a mat-button routerLink="/contacto" routerLinkActive="activo">Contacto</a>
+  </nav>
+
+  <mat-slide-toggle [checked]="temaOscuro()" (change)="cambiarTema()">
+    {{ temaOscuro() ? 'Oscuro' : 'Claro' }}
+  </mat-slide-toggle>
+</mat-toolbar>
+
+<main class="contenido">
+  <router-outlet />
+</main>
