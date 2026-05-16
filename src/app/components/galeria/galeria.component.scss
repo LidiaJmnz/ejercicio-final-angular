@@ -6,6 +6,9 @@
 .imagen-principal {
   background-color: var(--color-superficie);
   border: 1px solid var(--color-borde);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--sombra-card);
 }
 
 .imagen-principal img {
@@ -23,9 +26,10 @@
 .miniatura {
   border: 2px solid transparent;
   padding: 0.3rem;
-  background: transparent;
+  background: var(--color-superficie);
   cursor: pointer;
   border-radius: 8px;
+  box-shadow: var(--sombra-card);
 }
 
 .miniatura img {
@@ -37,4 +41,8 @@
 
 .miniatura.seleccionada {
   border-color: var(--color-primario);
+}
+
+.miniatura:hover {
+  transform: translateY(-2px);
 }

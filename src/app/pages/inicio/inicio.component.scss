@@ -1,9 +1,63 @@
-.inicio mat-card {
-  background-color: var(--color-superficie);
-  color: var(--color-texto);
-  border: 1px solid var(--color-borde);
+.inicio {
+  display: grid;
+  gap: 1.5rem;
 }
 
-p {
-  margin-bottom: 1rem;
+.hero {
+  background: linear-gradient(120deg, var(--color-superficie) 0%, var(--color-secundario) 100%);
+  border: 1px solid var(--color-borde);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--sombra-card);
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-borde);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  margin: 0.8rem 0;
+}
+
+.hero p {
+  max-width: 62ch;
+  line-height: 1.6;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.puntos-clave {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.puntos-clave mat-card {
+  border-radius: 18px;
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-card);
+  padding: 1.1rem;
+}
+
+.puntos-clave h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.puntos-clave p {
+  margin: 0;
+  line-height: 1.5;
 }
