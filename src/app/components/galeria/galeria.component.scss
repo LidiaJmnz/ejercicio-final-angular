@@ -1,0 +1,40 @@
+.galeria {
+  display: grid;
+  gap: 1rem;
+}
+
+.imagen-principal {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+}
+
+.imagen-principal img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.miniaturas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.miniatura {
+  border: 2px solid transparent;
+  padding: 0.3rem;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.miniatura img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.miniatura.seleccionada {
+  border-color: var(--color-primario);
+}

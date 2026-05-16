@@ -1,0 +1,48 @@
+<section class="blog">
+  <h2>Blog dinamico</h2>
+
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="formulario" (ngSubmit)="guardarPost()" class="formulario">
+        <mat-form-field appearance="outline">
+          <mat-label>Titulo del post</mat-label>
+          <input matInput formControlName="titulo" />
+          @if (formulario.controls.titulo.invalid && formulario.controls.titulo.touched) {
+            <mat-error>El titulo es obligatorio (minimo 3 caracteres).</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput rows="4" formControlName="descripcion"></textarea>
+          @if (formulario.controls.descripcion.invalid && formulario.controls.descripcion.touched) {
+            <mat-error>La descripcion es obligatoria (minimo 10 caracteres).</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="acciones-formulario">
+          <button mat-raised-button color="primary" type="submit">
+            {{ postEnEdicionId() ? 'Actualizar post' : 'Crear post' }}
+          </button>
+
+          @if (postEnEdicionId()) {
+            <button mat-button type="button" (click)="cancelarEdicion()">Cancelar</button>
+          }
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="rejilla-posts">
+    @for (post of posts(); track post.id) {
+      <app-tarjeta-post
+        [post]="post"
+        (editar)="editarPost($event)"
+        (eliminar)="eliminarPost($event)"
+        (destacar)="alternarDestacado($event)"
+      />
+    } @empty {
+      <p class="sin-posts">Todavia no hay publicaciones. Crea la primera.</p>
+    }
+  </div>
+</section>

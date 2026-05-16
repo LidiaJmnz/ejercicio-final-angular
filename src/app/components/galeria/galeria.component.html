@@ -1,0 +1,23 @@
+<section class="galeria">
+  <h2>Galeria interactiva</h2>
+
+  <mat-card class="imagen-principal" *ngIf="imagenSeleccionada() as imagenActual">
+    <img [src]="imagenActual.url" [alt]="imagenActual.titulo" />
+    <mat-card-content>
+      <h3>{{ imagenActual.titulo }}</h3>
+      <p>{{ imagenActual.descripcion }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="miniaturas">
+    <button
+      *ngFor="let imagen of imagenes()"
+      type="button"
+      class="miniatura"
+      [ngClass]="{ seleccionada: imagen.id === imagenSeleccionada().id }"
+      (click)="seleccionarImagen(imagen)"
+    >
+      <img [src]="imagen.url" [alt]="imagen.titulo" />
+    </button>
+  </div>
+</section>
