@@ -72,7 +72,6 @@ La navegacion es SPA, por tanto el contenido cambia sin recarga completa.
 
 ## 4. Buenas practicas aplicadas
 
-- Tipado estricto y sin `any`.
 - Separacion clara de responsabilidad por componentes.
 - Formularios reactivos tipados.
 - Estado local con signals para simplificar logica.
@@ -80,7 +79,7 @@ La navegacion es SPA, por tanto el contenido cambia sin recarga completa.
 
 ## 5. Guia de instalacion
 
-1. Clonar el repositorio.
+1. Clonar el repositorio: https://github.com/LidiaJmnz/ejercicio-final-angular
 2. Ejecutar:
    ```bash
    npm install
@@ -93,7 +92,7 @@ La navegacion es SPA, por tanto el contenido cambia sin recarga completa.
 
 ## 6. Guia de despliegue
 
-### 6.1 Vercel (automatico)
+### 6.1 Vercel 
 
 1. Subir cambios a rama `main` en GitHub.
 2. Importar repositorio en Vercel.
@@ -103,21 +102,12 @@ La navegacion es SPA, por tanto el contenido cambia sin recarga completa.
    - Output directory: `dist/angular-final/browser`
 4. Desplegar.
 
-### 6.2 InfinityFree por FTP (manual)
-
-1. Generar build de produccion:
-   ```bash
-   npm run build
-   ```
-2. Abrir cliente FTP (FileZilla, por ejemplo).
-3. Conectar con credenciales de InfinityFree.
-4. Subir contenido de `dist/angular-final/browser` a `htdocs`.
-5. Comprobar URL publica del hosting.
+Este es la URL de mi proyecto desplegado:
+https://ejercicio-final-angular.vercel.app/inicio
 
 ## 7. Entregables finales
 
 - Codigo fuente completo.
 - URL del repositorio GitHub.
 - URL publica en Vercel.
-- URL publica en InfinityFree.
 - Esta documentacion tecnica.
