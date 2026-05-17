@@ -4,7 +4,12 @@
 }
 
 .hero {
-  background: linear-gradient(120deg, var(--color-superficie) 0%, var(--color-secundario) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-superficie) 0%,
+    var(--rosa-humo) 38%,
+    color-mix(in srgb, var(--rosa-suave) 42%, white) 100%
+  );
   border: 1px solid var(--color-borde);
   border-radius: 24px;
   padding: 2rem;
@@ -15,8 +20,9 @@
   display: inline-block;
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid var(--color-borde);
+  background: var(--color-superficie-sutil);
+  border: 1px solid var(--rosa-suave);
+  color: var(--rosa-profundo);
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -24,6 +30,7 @@
 h1 {
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   margin: 0.8rem 0;
+  color: var(--rosa-nocta);
 }
 
 .hero p {
@@ -47,7 +54,11 @@ h1 {
 .puntos-clave mat-card {
   border-radius: 18px;
   border: 1px solid var(--color-borde);
-  background-color: var(--color-superficie);
+  background: linear-gradient(
+    160deg,
+    var(--color-superficie) 0%,
+    color-mix(in srgb, var(--rosa-humo) 55%, var(--color-superficie)) 100%
+  );
   box-shadow: var(--sombra-card);
   padding: 1.1rem;
 }
@@ -55,6 +66,7 @@ h1 {
 .puntos-clave h2 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
+  color: var(--rosa-profundo);
 }
 
 .puntos-clave p {

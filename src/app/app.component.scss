@@ -20,6 +20,7 @@
 .titulo {
   font-weight: 700;
   letter-spacing: 0.2px;
+  color: var(--rosa-profundo);
 }
 
 .menu {
@@ -39,8 +40,8 @@
 }
 
 .menu a.activo {
-  background-color: var(--color-secundario);
-  color: var(--color-primario);
+  background-color: color-mix(in srgb, var(--rosa-suave) 45%, var(--color-secundario));
+  color: var(--rosa-nocta);
   font-weight: 700;
 }
 

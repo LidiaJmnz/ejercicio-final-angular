@@ -4,7 +4,11 @@
 }
 
 mat-card {
-  background-color: var(--color-superficie);
+  background: linear-gradient(
+    165deg,
+    var(--color-superficie) 0%,
+    color-mix(in srgb, var(--rosa-humo) 35%, var(--color-superficie)) 100%
+  );
   color: var(--color-texto);
   border: 1px solid var(--color-borde);
   border-radius: 18px;
@@ -17,22 +21,22 @@ mat-card {
 }
 
 .estado {
-  border-left: 4px solid var(--color-primario);
+  border-left: 4px solid var(--rosa-medio);
   padding: 0.5rem;
 }
 
 .estado--info {
-  border-left-color: var(--color-primario);
+  border-left-color: var(--rosa-medio);
 }
 
 .estado--exito {
-  border-left-color: #7cb98a;
-  background: color-mix(in srgb, #7cb98a 12%, var(--color-superficie));
+  border-left-color: var(--rosa-profundo);
+  background: color-mix(in srgb, var(--rosa-suave) 22%, var(--color-superficie));
 }
 
 .estado--aviso {
   border-left-color: var(--color-error);
-  background: color-mix(in srgb, var(--color-error) 10%, var(--color-superficie));
+  background: color-mix(in srgb, var(--rosa-suave) 15%, var(--color-superficie));
 }
 
 .mensaje-estado {

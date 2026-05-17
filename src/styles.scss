@@ -1,39 +1,64 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-/* Modo claro: rosas pastel suaves */
-:root {
-  --color-fondo: #fff7fb;
-  --color-superficie: #ffffff;
-  --color-texto: #5c4a52;
-  --color-primario: #e8a8c8;
-  --color-primario-oscuro: #d492b8;
-  --color-secundario: #fde8f2;
-  --color-borde: #f3d6e4;
-  --color-error: #c85a7a;
-  --sombra-card: 0 12px 32px rgba(232, 168, 200, 0.18);
+/*
+ * Paleta rosa unificada (claro / medio / oscuro).
+ * Variables --rosa-* cambian en modo oscuro para mantener la misma jerarquia visual.
+ */
 
-  --mat-sys-primary: #e8a8c8;
-  --mat-sys-on-primary: #4a3540;
-  --mat-sys-primary-container: #fde8f2;
-  --mat-sys-on-primary-container: #5c4a52;
+/* ---------- Modo claro ---------- */
+:root {
+  --rosa-nieve: #fff8fc;
+  --rosa-humo: #fdeef7;
+  --rosa-suave: #f5cfe3;
+  --rosa-medio: #d994b8;
+  --rosa-profundo: #a0567c;
+  --rosa-nocta: #5c2d45;
+
+  --color-fondo: var(--rosa-nieve);
+  --color-fondo-degradado-fin: color-mix(in srgb, var(--rosa-humo) 65%, var(--rosa-suave));
+  --color-superficie: #ffffff;
+  --color-superficie-sutil: color-mix(in srgb, var(--rosa-humo) 35%, white);
+  --color-texto: var(--rosa-nocta);
+  --color-texto-suave: color-mix(in srgb, var(--rosa-nocta) 72%, white);
+  --color-primario: var(--rosa-medio);
+  --color-primario-hover: var(--rosa-profundo);
+  --color-secundario: var(--rosa-humo);
+  --color-borde: var(--rosa-suave);
+  --color-error: color-mix(in srgb, var(--rosa-profundo) 55%, #c62828);
+  --sombra-card: 0 14px 36px color-mix(in srgb, var(--rosa-profundo) 22%, transparent);
+
+  --mat-sys-primary: var(--rosa-medio);
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: var(--rosa-humo);
+  --mat-sys-on-primary-container: var(--rosa-nocta);
 }
 
-/* Modo oscuro: negro y rosa claro */
+/* ---------- Modo oscuro (base oscura + rosas claros) ---------- */
 body.tema-oscuro {
-  --color-fondo: #0d0d0d;
-  --color-superficie: #161616;
-  --color-texto: #fce7f3;
-  --color-primario: #fbcfe8;
-  --color-primario-oscuro: #f9a8d4;
-  --color-secundario: #1f1419;
-  --color-borde: #3d2f38;
-  --color-error: #fca5b5;
-  --sombra-card: 0 12px 36px rgba(0, 0, 0, 0.55);
+  --rosa-nieve: #0f090c;
+  --rosa-humo: #1a1116;
+  --rosa-suave: #3d2834;
+  --rosa-medio: #e8a5c4;
+  --rosa-profundo: #f5c6dc;
+  --rosa-nocta: #fde8f2;
 
-  --mat-sys-primary: #fbcfe8;
-  --mat-sys-on-primary: #1a1a1a;
-  --mat-sys-primary-container: #2d1f26;
-  --mat-sys-on-primary-container: #fce7f3;
+  --color-fondo: var(--rosa-nieve);
+  --color-fondo-degradado-fin: color-mix(in srgb, var(--rosa-humo) 88%, var(--rosa-suave));
+  --color-superficie: #1f141a;
+  --color-superficie-sutil: color-mix(in srgb, var(--rosa-suave) 45%, var(--rosa-humo));
+  --color-texto: var(--rosa-nocta);
+  --color-texto-suave: color-mix(in srgb, var(--rosa-nocta) 82%, var(--rosa-suave));
+  --color-primario: var(--rosa-medio);
+  --color-primario-hover: var(--rosa-profundo);
+  --color-secundario: var(--rosa-humo);
+  --color-borde: var(--rosa-suave);
+  --color-error: #ffb4c4;
+  --sombra-card: 0 14px 40px rgba(0, 0, 0, 0.45);
+
+  --mat-sys-primary: var(--rosa-medio);
+  --mat-sys-on-primary: #1a0f14;
+  --mat-sys-primary-container: var(--rosa-suave);
+  --mat-sys-on-primary-container: var(--rosa-nocta);
 }
 
 .mat-mdc-raised-button.mat-primary {
@@ -41,18 +66,48 @@ body.tema-oscuro {
   --mdc-filled-button-label-text-color: var(--mat-sys-on-primary);
 }
 
+.mat-mdc-raised-button.mat-primary:hover {
+  --mdc-filled-button-container-color: var(--color-primario-hover);
+}
+
 .mat-mdc-outlined-button.mat-primary {
-  --mdc-outlined-button-label-text-color: var(--color-primario);
+  --mdc-outlined-button-label-text-color: var(--rosa-profundo);
+  --mdc-outlined-button-outline-color: var(--rosa-suave);
+}
+
+body.tema-oscuro .mat-mdc-outlined-button.mat-primary {
+  --mdc-outlined-button-label-text-color: var(--rosa-profundo);
+  --mdc-outlined-button-outline-color: var(--rosa-medio);
 }
 
 body.tema-oscuro .mat-toolbar,
 .mat-toolbar {
   --mat-toolbar-container-background-color: color-mix(
     in srgb,
-    var(--color-superficie) 92%,
-    transparent
+    var(--color-superficie) 94%,
+    var(--rosa-suave)
   );
   --mat-toolbar-container-text-color: var(--color-texto);
+}
+
+/* Campos Material alineados con la paleta rosa */
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: var(--color-borde);
+  --mdc-outlined-text-field-hover-outline-color: var(--rosa-medio);
+  --mdc-outlined-text-field-focus-outline-color: var(--rosa-profundo);
+  --mat-form-field-filled-container-color: var(--color-superficie-sutil);
+}
+
+.mat-mdc-slide-toggle .mdc-switch--selected .mdc-switch__handle-track {
+  background: var(--rosa-suave);
+}
+
+.mat-mdc-slide-toggle .mdc-switch--selected .mdc-switch__icon--on {
+  fill: var(--rosa-profundo);
+}
+
+.mat-divider {
+  border-top-color: var(--rosa-suave) !important;
 }
 
 html,
@@ -63,9 +118,18 @@ body {
 
 body {
   background-color: var(--color-fondo);
+  background-image: linear-gradient(
+    165deg,
+    var(--color-fondo) 0%,
+    var(--color-fondo-degradado-fin) 52%,
+    color-mix(in srgb, var(--rosa-suave) 28%, var(--color-fondo)) 100%
+  );
+  background-attachment: fixed;
   color: var(--color-texto);
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 *,
@@ -81,6 +145,6 @@ button {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-primario) 65%, white);
+  outline: 3px solid color-mix(in srgb, var(--rosa-medio) 55%, white);
   outline-offset: 2px;
 }
