@@ -20,3 +20,22 @@ mat-card {
   border-left: 4px solid var(--color-primario);
   padding: 0.5rem;
 }
+
+.estado--info {
+  border-left-color: var(--color-primario);
+}
+
+.estado--exito {
+  border-left-color: #7cb98a;
+  background: color-mix(in srgb, #7cb98a 12%, var(--color-superficie));
+}
+
+.estado--aviso {
+  border-left-color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 10%, var(--color-superficie));
+}
+
+.mensaje-estado {
+  margin: 0;
+  line-height: 1.5;
+}

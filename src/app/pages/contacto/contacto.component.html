@@ -44,12 +44,18 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="estado">
+  <mat-card
+    class="estado"
+    [class.estado--exito]="tipoEstadoPanel() === 'exito'"
+    [class.estado--aviso]="tipoEstadoPanel() === 'aviso'"
+    [class.estado--info]="tipoEstadoPanel() === 'info'"
+  >
     <mat-card-header>
-      <mat-card-title>Estado actual</mat-card-title>
+      <mat-card-title>Estado del formulario</mat-card-title>
+      <mat-card-subtitle>Ejemplos de valueChanges, blur y envio</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>{{ ultimaInteraccion() }}</p>
+      <p class="mensaje-estado">{{ textoEstado() }}</p>
     </mat-card-content>
   </mat-card>
 </section>

@@ -12,6 +12,8 @@ type FormularioContacto = FormGroup<{
   mensaje: FormControl<string>;
 }>;
 
+type TipoEstadoPanelContacto = 'info' | 'exito' | 'aviso';
+
 @Component({
   selector: 'app-contacto',
   imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
@@ -19,7 +21,8 @@ type FormularioContacto = FormGroup<{
   styleUrl: './contacto.component.scss'
 })
 export class ContactoComponent {
-  readonly ultimaInteraccion = signal<string>('Esperando acciones del usuario...');
+  readonly textoEstado = signal<string>('Rellena el formulario. Aqui veras los eventos del ejercicio.');
+  readonly tipoEstadoPanel = signal<TipoEstadoPanelContacto>('info');
   readonly formulario: FormularioContacto = new FormGroup({
     nombre: new FormControl('', {
       nonNullable: true,
@@ -38,14 +41,21 @@ export class ContactoComponent {
   constructor() {
     // Registro en tiempo real de cambios para cumplir el evento valueChanges.
     this.formulario.valueChanges.pipe(takeUntilDestroyed()).subscribe((valorActual) => {
-      this.ultimaInteraccion.set(
-        `valueChanges -> Nombre: ${valorActual.nombre ?? ''}, Email: ${valorActual.email ?? ''}`
-      );
+      this.tipoEstadoPanel.set('info');
+      const nombre = valorActual.nombre ?? '';
+      const email = valorActual.email ?? '';
+      this.textoEstado.set(`Cambios en el formulario: nombre "${nombre}", correo "${email}".`);
     });
   }
 
   marcarBlur(campo: 'nombre' | 'email' | 'mensaje'): void {
-    this.ultimaInteraccion.set(`blur -> El usuario salio del campo ${campo}`);
+    this.tipoEstadoPanel.set('info');
+    const etiquetas: Record<'nombre' | 'email' | 'mensaje', string> = {
+      nombre: 'Nombre',
+      email: 'Correo',
+      mensaje: 'Mensaje'
+    };
+    this.textoEstado.set(`Has salido del campo "${etiquetas[campo]}".`);
   }
 
   /**
@@ -59,7 +69,8 @@ export class ContactoComponent {
   enviarFormulario(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
-      this.ultimaInteraccion.set('submit -> Formulario invalido, corrige errores');
+      this.tipoEstadoPanel.set('aviso');
+      this.textoEstado.set('Faltan datos o hay errores. Revisa los campos en rojo y vuelve a intentarlo.');
       return;
     }
 
@@ -75,7 +86,10 @@ export class ContactoComponent {
     this.formulario.markAsPristine();
     this.formulario.markAsUntouched();
 
-    this.ultimaInteraccion.set('submit -> Mensaje enviado correctamente');
+    this.tipoEstadoPanel.set('exito');
+    this.textoEstado.set(
+      '¡Listo! Los datos son validos (solo practica en el navegador, no se envian a ningun servidor).'
+    );
   }
 
   mostrarError(campo: 'nombre' | 'email' | 'mensaje'): boolean {
