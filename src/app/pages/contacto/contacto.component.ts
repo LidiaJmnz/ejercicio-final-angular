@@ -48,6 +48,14 @@ export class ContactoComponent {
     this.ultimaInteraccion.set(`blur -> El usuario salio del campo ${campo}`);
   }
 
+  /**
+   * Encapsula el envio para poder llamar preventDefault y evitar errores del navegador con submit nativo.
+   */
+  onSubmitFormulario(evento: SubmitEvent): void {
+    evento.preventDefault();
+    this.enviarFormulario();
+  }
+
   enviarFormulario(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
@@ -55,12 +63,19 @@ export class ContactoComponent {
       return;
     }
 
+    // Reset sin disparar valueChanges hasta terminar evita estados intermedios extranos en Material.
+    this.formulario.reset(
+      {
+        nombre: '',
+        email: '',
+        mensaje: ''
+      },
+      { emitEvent: false }
+    );
+    this.formulario.markAsPristine();
+    this.formulario.markAsUntouched();
+
     this.ultimaInteraccion.set('submit -> Mensaje enviado correctamente');
-    this.formulario.reset({
-      nombre: '',
-      email: '',
-      mensaje: ''
-    });
   }
 
   mostrarError(campo: 'nombre' | 'email' | 'mensaje'): boolean {

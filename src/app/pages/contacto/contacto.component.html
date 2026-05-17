@@ -6,7 +6,8 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()" class="formulario">
+      <!-- novalidate evita validacion HTML5 del navegador que choca con Angular y puede lanzar error al enviar -->
+      <form [formGroup]="formulario" class="formulario" novalidate (ngSubmit)="onSubmitFormulario($event)">
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
           <input matInput formControlName="nombre" (blur)="marcarBlur('nombre')" />
@@ -44,7 +45,9 @@
   </mat-card>
 
   <mat-card class="estado">
-    <mat-card-title>Estado actual</mat-card-title>
+    <mat-card-header>
+      <mat-card-title>Estado actual</mat-card-title>
+    </mat-card-header>
     <mat-card-content>
       <p>{{ ultimaInteraccion() }}</p>
     </mat-card-content>

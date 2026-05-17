@@ -1,27 +1,58 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+/* Modo claro: rosas pastel suaves */
 :root {
-  --color-fondo: #fff5fa;
+  --color-fondo: #fff7fb;
   --color-superficie: #ffffff;
-  --color-texto: #2f1023;
-  --color-primario: #d63384;
-  --color-primario-oscuro: #b02a6f;
-  --color-secundario: #ffe0ef;
-  --color-borde: #f2c3dc;
-  --color-error: #b3261e;
-  --sombra-card: 0 10px 28px rgba(214, 51, 132, 0.12);
+  --color-texto: #5c4a52;
+  --color-primario: #e8a8c8;
+  --color-primario-oscuro: #d492b8;
+  --color-secundario: #fde8f2;
+  --color-borde: #f3d6e4;
+  --color-error: #c85a7a;
+  --sombra-card: 0 12px 32px rgba(232, 168, 200, 0.18);
+
+  --mat-sys-primary: #e8a8c8;
+  --mat-sys-on-primary: #4a3540;
+  --mat-sys-primary-container: #fde8f2;
+  --mat-sys-on-primary-container: #5c4a52;
 }
 
+/* Modo oscuro: negro y rosa claro */
 body.tema-oscuro {
-  --color-fondo: #180915;
-  --color-superficie: #251021;
-  --color-texto: #ffe8f3;
-  --color-primario: #ff70b8;
-  --color-primario-oscuro: #e455a1;
-  --color-secundario: #34152d;
-  --color-borde: #5c2a4c;
-  --color-error: #ff8a80;
-  --sombra-card: 0 10px 28px rgba(0, 0, 0, 0.35);
+  --color-fondo: #0d0d0d;
+  --color-superficie: #161616;
+  --color-texto: #fce7f3;
+  --color-primario: #fbcfe8;
+  --color-primario-oscuro: #f9a8d4;
+  --color-secundario: #1f1419;
+  --color-borde: #3d2f38;
+  --color-error: #fca5b5;
+  --sombra-card: 0 12px 36px rgba(0, 0, 0, 0.55);
+
+  --mat-sys-primary: #fbcfe8;
+  --mat-sys-on-primary: #1a1a1a;
+  --mat-sys-primary-container: #2d1f26;
+  --mat-sys-on-primary-container: #fce7f3;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  --mdc-filled-button-container-color: var(--color-primario);
+  --mdc-filled-button-label-text-color: var(--mat-sys-on-primary);
+}
+
+.mat-mdc-outlined-button.mat-primary {
+  --mdc-outlined-button-label-text-color: var(--color-primario);
+}
+
+body.tema-oscuro .mat-toolbar,
+.mat-toolbar {
+  --mat-toolbar-container-background-color: color-mix(
+    in srgb,
+    var(--color-superficie) 92%,
+    transparent
+  );
+  --mat-toolbar-container-text-color: var(--color-texto);
 }
 
 html,
